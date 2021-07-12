@@ -8,18 +8,21 @@ ascii_banner = open('ascii_banner.txt', 'r')
 if platform.system() == "Windows":
     banner = ascii_banner.read()
 elif platform.system() == "Linux":
-    os.system("echo -e $(cat ansi_banner.ans)")
+    banner = ''
+    os.system("echo $(cat ansi_banner.ans)")
 else:
+    banner = ''
     pass
 
 print(banner)
 with open('list.csv', 'r') as list_obj:
     csv_dict_reader = DictReader(list_obj)
     for row in csv_dict_reader:
-        menu_format = f"{Fore.LIGHTCYAN_EX} {row['number']}{Fore.RESET} -- {Fore.MAGENTA}{row['origin']} {Fore.LIGHTGREEN_EX}({row['url']}){Fore.RESET}\n"
+        menu_format = f"{Fore.LIGHTCYAN_EX} {row['number']}{Fore.RESET} -- {Fore.MAGENTA}{row['origin']} {Fore.LIGHTGREEN_EX}({row['url']}){Fore.WHITE}\n"
         sys.stdout.write(menu_format)
 
-choice = input(f"Choose what to download: {Fore.YELLOW}")
+choice = input(f"Choose what to download:{Fore.WHITE} ")
+print(f"{Fore.RESET}")
 with open('list.csv', 'r') as list_obj2:
     csv_dict_reader2 = DictReader(list_obj2)
     for row2 in csv_dict_reader2:
