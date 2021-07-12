@@ -4,9 +4,15 @@ from csv import DictReader
 count = 1
 origin = []
 url = []
-# mega = Mega()
+ascii_banner = open('ascii_banner.txt', 'r')
+if platform.system() == "Windows":
+    banner = ascii_banner.read()
+elif platform.system() == "Linux":
+    os.system("echo -e $(cat ansi_banner.ans)")
+else:
+    pass
 
-
+print(banner)
 with open('list.csv', 'r') as list_obj:
     csv_dict_reader = DictReader(list_obj)
     for row in csv_dict_reader:
@@ -41,5 +47,3 @@ with open('list.csv', 'r') as list_obj2:
             # m.download_url(str(row2['url']), './')
             exec(DOWN_CODE)
             print(f"{Fore.LIGHTCYAN_EX}Done!\nPassword: ANK_Stash5!{Fore.RESET}")
-
-
