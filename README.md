@@ -1,2 +1,2 @@
 # Leak Downloader
- Download leaks from MEGA
+ For the Stash server. (list.csv located in server file)
